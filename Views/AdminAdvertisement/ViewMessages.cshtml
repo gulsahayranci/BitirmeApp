@@ -1,0 +1,33 @@
+@model IEnumerable<BitirmeApp3.ViewModels.ReceivedMessageViewModel>
+
+@{
+    ViewData["Title"] = "View Application";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<hr>
+
+
+<div class="container">
+    <h3>Gelen Mesajlar</h3>
+    <hr>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Gönderen</th>
+                <th>İçerik</th>
+                <th>Gönderilen Zaman</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in Model)
+            {
+                <tr>
+                    <td>@message.SenderUserName</td>
+                    <td>@message.Content</td>
+                    <td>@(message.SentAt != null ? message.SentAt.Value.ToString("g") : "N/A")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

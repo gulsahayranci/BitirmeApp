@@ -1,0 +1,71 @@
+@model IEnumerable<BitirmeApp3.ViewModels.AppliedAdvertisementsViewModel>
+@{
+    ViewData["Title"] = "InApp - Applied Advertisements";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h3>Gelen Başvurular</h3>
+<hr>
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>İlan Resim</th>
+                                <th>İlan Title</th>
+                                <th>İlana Başvuran</th>
+                                <th>Gelen Başvuru Formunu Görüntüle</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ad in Model)
+                            {
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="#">
+                                            <img src="@ad.ImageUrl" alt="" style="width: 60px; height: 50px; object-fit: cover;" />
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            @ad.AdvertisementTitle
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            @ad.ApplicantName
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <a asp-action="ViewApplications" asp-route-applicationId="@ad.ApplicationId">
+                                            <button class="btn btn-outline-secondary">
+                                                <i class="fa fa-eye"></i> Gör
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        @if (ad.IsApproved)
+                                        {
+                                            <span class="badge badge-success">Onaylandı</span>
+                                        }
+                                        else if (ad.IsRejected)
+                                        {
+                                            <span class="badge badge-danger">Reddedildi</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-warning">Beklemede</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

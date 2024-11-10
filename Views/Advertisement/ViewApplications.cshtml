@@ -1,0 +1,70 @@
+@model BitirmeApp3.ViewModels.ViewApplicationsViewModel
+@{
+    ViewData["Title"] = "View Application";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Applicant Name</td>
+                                <td>@Model.ApplicantName</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>@Model.ApplicantEmail</td>
+                            </tr>
+                            <tr>
+                                <td>Message</td>
+                                <td>@Model.Message</td>
+                            </tr>
+                            <tr>
+                                <td>Age</td>
+                                <td>@Model.Age</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>@Model.PhoneNumber</td>
+                            </tr>
+                            <tr>
+                                <td>Experience</td>
+                                <td>@Model.Experience</td>
+                            </tr>
+                            <tr>
+                                <td>Tool</td>
+                                <td>@Model.Tool</td>
+                            </tr>
+                            <tr>
+                                <td>Tractor</td>
+                                <td>@Model.Tractor</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="actions">
+                    <form asp-action="EvaluateApplication" method="post" class="d-inline">
+                        <input type="hidden" name="applicationId" value="@Model.ApplicationId" />
+                        <input type="hidden" name="isAccepted" value="true" />
+                        <button type="submit" class="btn btn-success">Accept</button>
+                    </form>
+                    <form asp-action="EvaluateApplication" method="post" class="d-inline">
+                        <input type="hidden" name="applicationId" value="@Model.ApplicationId" />
+                        <input type="hidden" name="isAccepted" value="false" />
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

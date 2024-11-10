@@ -1,0 +1,100 @@
+
+@model BitirmeApp3.ViewModels.UserProfileViewModel
+
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+   
+}
+
+<div class="midde_cont">
+    <div class="container-fluid">
+        <div class="row column_title">
+            <div class="col-md-12">
+                <div class="page_title">
+                    <h2>Profile</h2>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row column1">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="white_shd full margin_bottom_30">
+                    <div class="full graph_head">
+                        <div class="heading1 margin_0">
+                            <h2>Kullanıcı Profili</h2>
+                        </div>
+                    </div>
+                    <div class="full price_table padding_infor_info">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="full dis_flex center_text">
+                                   
+                                    <div class="profile_contant">
+                                        <div class="contact_inner">
+                                           @if (Model != null)
+                                                {
+                                                    <h3>@Model?.UserName @Model?.LastName</h3>
+                                                }
+                                            <p><strong>City: </strong>@Model.City</p>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-envelope-o"></i> : @Model.Email</li>
+                                              
+                                            </ul>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="full inner_elements margin_top_30">
+                                    <div class="tab_style2">
+                                        <div class="tabbar">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                  
+                                                        <a class="nav-item nav-link active" id="nav-home-tab" href="@Url.Action("Create", "AdminAdvertisement")" role="tab" aria-selected="true">İlan Aç</a>
+                                                        <a class="nav-item nav-link" id="nav-profile-tab" href="@Url.Action("MyAdd", "AdminAdvertisement")" role="tab" aria-selected="false">Açtığım ilanlar</a>
+                                                        <a class="nav-item nav-link" id="nav-contact-tab" href="@Url.Action("InApp", "AdminAdvertisement")" role="tab" aria-selected="false">Gelen Başvurular</a>
+                                                    
+
+                                                    
+                                                    
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane fade show active" id="recent_activity" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                    <div class="msg_list_main">
+                                                        <ul class="msg_list">
+                                                          
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="project_worked" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
+                                                        quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                                                        qui ratione voluptatem sequi nesciunt.
+                                                    </p>
+                                                </div>
+                                                <div class="tab-pane fade" id="profile_section" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et 
+                                                        quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos 
+                                                        qui ratione voluptatem sequi nesciunt.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end user profile section -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <!-- footer -->
+    
+    </div>
+</div>

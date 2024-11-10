@@ -1,0 +1,71 @@
+@model BitirmeApp3.ViewModels.ContactViewModel
+
+@{
+    ViewData["Title"] = "İletişime Geç";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>İletişime Geç</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+
+<!-- Start Contact Us  -->
+<div class="contact-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-sm-12">
+                <div class="contact-form-right">
+                    <h2>İletişime Geç</h2>
+                    <p>Bakanlığa iletmek istediğiniz görüş, öneri ve isteklerinizi gönderebilirsiniz!</p>
+                    @if (TempData["MessageSent"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["MessageSent"]
+                        </div>
+                    }
+                    <form asp-action="Iletisim" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" asp-for="Name" placeholder="İsim" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" asp-for="Email" placeholder="Mailiniz" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" asp-for="Subject" placeholder="Konu" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" asp-for="Message" placeholder="Mesajınız" rows="4"></textarea>
+                                    <span asp-validation-for="Message" class="text-danger"></span>
+                                </div>
+                                <div class="submit-button text-center">
+                                    <button class="btn hvr-hover" id="submit" type="submit">Mesajı Gönder</button>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact Us -->

@@ -1,0 +1,56 @@
+@model IEnumerable<BitirmeApp3.Models.Announcement>
+@{
+    ViewData["Title"] = "Duyurular";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="full graph_head">
+    <div class="heading1 margin_0">
+        <h2>Duyurular </h2>
+        <hr>
+        <a class="btn btn-primary" asp-controller="Duyuru" asp-action="Create">Duyuru Ekle</a>
+       
+    </div>
+</div>
+
+<div class="table_section padding_infor_info">
+    <div class="table-responsive-sm">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Resim</th>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>Oluşturan</th>
+                    <th>Tarih</th>
+                    <th>Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var announcement in Model)
+            {
+                <tr>
+                    <td>@announcement.Id</td>
+                    <td>
+                        <img class="img-fluid" src="@announcement.ImagePath" alt="" style="max-width: 80px; max-height: 80px;" />
+                    </td>
+                    <td>@announcement.Title</td>
+                    <td>@announcement.Content</td>
+                     <td>@announcement.User.UserName @announcement.User.LastName</td>
+                    <td>
+                        <small> @announcement.CreatedDate.ToString("yyyy-MM-dd")</small>
+                    </td>
+                    <td>
+                                <form asp-action="Delete" asp-controller="Duyuru" method="post" style="btn btn-primary">
+                                <input type="hidden" name="id" value="@announcement.Id" />
+                                <button type="submit">Delete</button>
+                            </form>
+                    </td>
+              
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

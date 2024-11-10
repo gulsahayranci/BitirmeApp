@@ -1,0 +1,42 @@
+@model IEnumerable<BitirmeApp3.Models.AppUser>
+@{
+    ViewData["Title"] = "Investor List";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Yatırımcı Adı</th>
+                                <th>Yatırımcıyı Görüntüle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                <tr>
+                                    <td class="fa fa-user s_color" style="height: 5px;">
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                           @user.UserName @user.LastName
+                                        </a>
+                                    </td>
+                                    <td class="add-pr">
+                                        <a class="btn hvr-hover" href="@Url.Action("ViewYatırımcı", "Home", new { id = user.Id })">Gör</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

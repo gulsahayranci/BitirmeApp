@@ -1,0 +1,67 @@
+@model BitirmeApp3.ViewModels.AdApplicationViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_Bos.cshtml";
+    
+}
+
+<h2 class="text-center">İlan Başvuru Formu</h2>
+<hr>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+
+<form asp-action="Apply" method="post">
+    <input type="hidden" asp-for="AdvertisementId" />
+    <input type="hidden" asp-for="UserId" />
+    
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" readonly />
+    </div>
+    
+
+    
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" readonly />
+    </div>
+        <div class="form-group">
+        <label asp-for="City"></label>
+        <input asp-for="City" class="form-control" readonly />
+    </div>
+   
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Experience"></label>
+        <input asp-for="Experience" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message" class="form-control"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Tool"></label>
+        <input asp-for="Tool" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Tractor"></label>
+        <input asp-for="Tractor" class="form-control" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Gönder</button>
+</form>
+    </div>
+</div>

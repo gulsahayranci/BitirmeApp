@@ -1,0 +1,69 @@
+@model BitirmeApp3.ViewModels.CreateAdvertisementViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create Advertisement</h2>
+<hr>
+<hr>
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tag"></label>
+        <input asp-for="Tag" class="form-control" />
+        <span asp-validation-for="Tag" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" class="form-control">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedCityId">City</label>
+        <select asp-for="SelectedCityId" class="form-control">
+            @foreach (var city in Model.Cities)
+            {
+                <option value="@city.Id">@city.Name</option>
+            }
+        </select>
+        <span asp-validation-for="SelectedCityId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Image">Image</label>
+        <input type="file" asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Alan"></label>
+        <input asp-for="Alan" class="form-control" />
+        <span asp-validation-for="Alan" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+

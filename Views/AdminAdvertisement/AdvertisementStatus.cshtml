@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Advertisement Status</h2>
+
+<p id="fallbackText" style="display: none;">Unable to load chart. Please check the console for errors.</p>
+<canvas id="advertisementStatusChart" width="400" height="400" style="display: none;"></canvas>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Document loaded, fetching data...');
+
+            var approvedCount = @ViewData["ApprovedCount"];
+            var rejectedCount = @ViewData["RejectedCount"];
+            var pendingCount = @ViewData["PendingCount"];
+
+            console.log('Data:', {
+                approvedCount: approvedCount,
+                rejectedCount: rejectedCount,
+                pendingCount: pendingCount
+            });
+
+            if (approvedCount !== undefined && rejectedCount !== undefined && pendingCount !== undefined) {
+                document.getElementById('fallbackText').style.display = 'none';
+                document.getElementById('advertisementStatusChart').style.display = 'block';
+
+                var ctx = document.getElementById('advertisementStatusChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Approved', 'Rejected', 'Pending'],
+                        datasets: [{
+                            data: [approvedCount, rejectedCount, pendingCount],
+                            backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56'],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Advertisement Status'
+                            }
+                        }
+                    }
+                });
+            } else {
+                console.error('Data is not available');
+                document.getElementById('fallbackText').style.display = 'block';
+            }
+        });
+    </script>
+}

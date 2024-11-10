@@ -1,0 +1,29 @@
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_AdminLayout.cshtml";
+}
+@model AppRole
+    <div class="full graph_head">
+         <div class="heading1 margin_0">
+         <h2>Rol Oluştur</h2>
+                                    
+         <hr>
+         </div>
+        </div>
+     
+        
+        <form asp-action="Create" method="post" >
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" >
+            </div>
+         
+         
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+
+
+
+        </form>

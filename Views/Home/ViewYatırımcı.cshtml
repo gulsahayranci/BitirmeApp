@@ -1,0 +1,56 @@
+@model BitirmeApp3.ViewModels.UserAdvertisementsViewModel
+@{
+    ViewData["Title"] = "User Details";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<div class="wishlist-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>@Model.User.UserName @Model.User.LastName</h2>
+                <p>Email: @Model.User.Email</p>
+                <p>City: @Model.User.CityId</p>
+               
+                
+                <h1>Açtığı İlanlar</h1>
+                <div class="shop-box-inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                                <div class="right-product-box">
+                                    <div class="product-categorie-box">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                                <div class="row">
+                                                    @foreach (var ad in Model.Advertisements)
+                                                    {
+                                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                            <div class="products-single fix">
+                                                                <div class="box-img-hover">
+                                                                    <img src="@ad.ImageUrl" class="img-fluid" alt="Image">
+                                                                    <div class="mask-icon">
+                                                                        <a class="cart" asp-controller="Advertisement" asp-action="Details" asp-route-id="@ad.Id">Gör</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="why-text">
+                                                                    <h4>@ad.Title</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+             
+            </div>
+        </div>
+    </div>
+</div>

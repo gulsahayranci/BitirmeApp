@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_Bos.cshtml";
+}
+@model RegisterViewModel
+<div class="full_container">
+         <div class="container">
+            <div class="center verticle_center full_height">
+               <div class="login_section">
+                  <div class="logo_login">
+                     <div class="center">
+                     
+                     </div>
+                  </div>
+                  <div class="login_form">
+                     <form asp-action="Register" asp-controller="Account" method="post">
+                        <fieldset>
+                            <div class="field">
+                              <label class="label_field" asp-for="UserName">İsim</label>
+                              <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                               <span asp-validation-for="UserName" class="text-danger"></span>
+                           </div>
+                           <div class="field">
+                              <label class="label_field" asp-for="LastName">Soyisim </label>
+                              <input asp-for="LastName" class="form-control" placeholder="LastName" />
+                               <span asp-validation-for="LastName" class="text-danger"></span>
+                           </div>
+                           <div class="field">
+                              <label class="label_field" asp-for="Email">Email Address</label>
+                              <input asp-for="Email" class="form-control" placeholder="E-mail" />
+                               <span asp-validation-for="Email" class="text-danger"></span>
+                           </div>
+                           <div class="field">
+                             <label class="label_field" asp-for="Password">Password</label>
+                              <input asp-for="Password" class="form-control" placeholder="Password" />
+                               <span asp-validation-for="Password" class="text-danger"></span>
+
+                           </div>
+                               <div class="field">
+                             <label class="label_field" asp-for="ConfirmPassword">ConfirmPassword</label>
+                              <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" />
+                               <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                           </div>
+                            <div class="mb-3">
+                            <label asp-for="SelectedCityId"></label>
+                            <select asp-for="SelectedCityId" class="form-control">
+                                <option value="">-- Select City --</option>
+                                @foreach (var city in Model.Cities)
+                                {
+                                    <option value="@city.Id">@city.Name</option>
+                                }
+                            </select>
+                            <span asp-validation-for="SelectedCityId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SelectedRole" class="control-label"></label>
+                                <select asp-for="SelectedRole" class="form-control" asp-items="new SelectList(Model.Roles)"></select>
+                                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+                            </div>
+                          
+                           <div class="field margin_0">
+                              <label class="label_field hidden">hidden label</label>
+                              <button class="main_bt">Üye ol</button>
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ 

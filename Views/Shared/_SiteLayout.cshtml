@@ -1,0 +1,280 @@
+﻿@inject BitirmeApp3.Models.IdentityContext _context
+@{
+    var userEmail = ViewData["userEmail"];
+    var settings = _context.SiteSettings.FirstOrDefault();
+    var phoneNumber = settings?.PhoneNumber ?? "Default Phone Number";
+    var address = settings?.Address ?? "Default Address";
+    var email = settings?.Email ?? "Default Email";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BitirmeApp3</title>
+     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/SiteLayout/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/SiteLayout/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/SiteLayout/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/SiteLayout/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="custom-select-box">
+                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+							<option>¥ JPY</option>
+							<option>$ USD</option>
+							<option>€ EUR</option>
+						</select>
+                    </div>
+                    <div class="right-phone-box">
+                        <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                    </div>
+            
+                    <div class="our-link">
+                        <ul>
+                              @if(userEmail!=null){
+                                 <li>
+                                <a class="fa fa-user s_color" asp-controller="Home" asp-action="Hesabım" > Hesabım</a></li>
+                           
+                            }else{
+                                <li>
+                                <a href="#"><i class=""></i> Hoşgeldin Misafir!</a></li>
+                            }
+
+                           
+                            <li>
+                                <a href="#"><i class="fas fa-location-arrow"></i>Lokasyon</a></li>
+                            <li>
+                                <a asp-controller="Home" asp-action="Iletisim"><i class="fas fa-headset"></i> İletişime Geç</a></li>
+                                 @if (userEmail != null){
+
+                                 }
+                                 else{
+                                    <li>
+                             
+                                <a class="nav-link " asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                                </li>
+                                 }
+                            
+                                 @if (userEmail != null){
+
+                                 }
+                                 else{
+                                <li>
+                                <a class="nav-link " asp-controller="Account" asp-action="Register">Üye ol</a>
+                                </li>
+                                    
+                                 }
+                                   @if (userEmail != null){
+                                     <li>
+                                <a class="nav-link " asp-controller="Account" asp-action="Logout">Çıkış Yap</a>
+                                </li>
+
+                                 }else{
+
+                                 }
+                          
+                           
+                                @if (userEmail != null)
+                                {
+                                   <li>
+                                <a class="nav-link ">Welcome, @userEmail</a>
+                                </li>
+                                }
+                                else
+                                {
+                                    
+                                }
+                        </ul>
+                    </div>
+                </div>
+                
+              
+					<div class="login-box">
+						
+					</div>
+                
+                    <div class="text-slid-box">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" ><img src="~/SiteLayout/images/tarımbakanlıklogo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item "><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Hakkımızda">Hakkımızda</a></li>
+                        <li class="nav-item"><a  class="nav-link" asp-controller="Home" asp-action="Advertisement">İlanlar</a> </li>
+                        <li class="nav-item"><a class="nav-link"  asp-controller="Home" asp-action="Mudurluk" >İl Müdürlükleri</a></li>
+                        <li class="nav-item"><a class="nav-link"  asp-controller="Home" asp-action="Yatırımcı" >Yatırımcılar</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Iletisim">İletişime Geç</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+             
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="~/SiteLayout/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/SiteLayout/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/SiteLayout/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    @RenderBody()
+
+
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+			
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>Hakkımızda</h4>
+                            <p>Bizler tarım sektöründeki paydaşlar arasındaki iletişimi güçlendirmeyi ve işbirliğini artırmayı amaçlamaktayız. Çiftçilerin ihtiyaçlarına hızlı ve etkili çözümler sunumak, yatırımcılar doğru projelere yönlendirmek bizim gayemizin en başıdır.</p> 
+							
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Sayfalarımız</h4>
+                            <ul>
+                                <li><a asp-controller="Home" asp-action="Hakkımızda">Hakkımızda</a></li>
+                                <li><a asp-controller="Home" asp-action="Advertisement">İlanlar</a></li>
+                                <li><a asp-controller="Home" asp-action="Mudurluk">İl Müdürlükleri</a></li>
+                                <li><a asp-controller="Home" asp-action="Yatırımcı">Yatırımcılar</a></li>
+                                <li><a asp-controller="Home" asp-action="Iletisim">İletişime Geç</a></li>
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>İletişim</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: @address  </p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i> <a href="">@phoneNumber</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="">@email</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+            <a href="https://html.design/">html design</a></p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/SiteLayout/js/jquery-3.2.1.min.js"></script>
+    <script src="~/SiteLayout/js/popper.min.js"></script>
+    <script src="~/SiteLayout/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/SiteLayout/js/jquery.superslides.min.js"></script>
+    <script src="~/SiteLayout/js/bootstrap-select.js"></script>
+    <script src="~/SiteLayout/js/inewsticker.js"></script>
+    <script src="~/SiteLayout/js/bootsnav.js."></script>
+    <script src="~/SiteLayout/js/images-loded.min.js"></script>
+    <script src="~/SiteLayout/js/isotope.min.js"></script>
+    <script src="~/SiteLayout/js/owl.carousel.min.js"></script>
+    <script src="~/SiteLayout/js/baguetteBox.min.js"></script>
+    <script src="~/SiteLayout/js/form-validator.min.js"></script>
+    <script src="~/SiteLayout/js/contact-form-script.js"></script>
+    <script src="~/SiteLayout/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

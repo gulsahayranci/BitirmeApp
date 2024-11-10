@@ -1,0 +1,52 @@
+@model List<ProvinceAdvertisementStatsViewModel>
+@{
+    ViewData["Title"] = "Province Advertisement Statistics";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Province Advertisement Statistics</h2>
+
+<canvas id="provinceStatsChart" width="400" height="200"></canvas>
+
+<!-- Temporary display of model data -->
+@foreach (var stat in Model)
+{
+    <p>@stat.Province: Price = @stat.TotalPrice, Area = @stat.TotalArea</p>
+}
+
+@section Scripts {
+    <script src="~/js/myscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('provinceStatsChart').getContext('2d');
+        var provinceStatsChart = new Chart(ctx, {
+            type: 'bar', // Change to 'pie' for a pie chart
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.Select(m => m.Province))),
+                datasets: [{
+                    label: 'Total Price',
+                    data: @Html.Raw(Json.Serialize(Model.Select(m => m.TotalPrice))),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Total Area',
+                    data: @Html.Raw(Json.Serialize(Model.Select(m => m.TotalArea))),
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+ 
+
+}

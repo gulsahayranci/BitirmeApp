@@ -1,0 +1,218 @@
+﻿@model BitirmeApp3.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_SiteLayout.cshtml";
+}
+
+    <!-- Start Slider -->
+    <div id="slides-shop" class="cover-slides">
+        <ul class="slides-container">
+            <li class="text-center">
+                <img src="~/SiteLayout/images/banner-01.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Tarım İlan Web Sitesi</strong></h1>
+                            <p class="m-b-40"> </p>
+                            <p><a class="btn hvr-hover" asp-controller="Home" asp-action="Advertisement" >İlanları İncele</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="~/SiteLayout/images/banner-01.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Tarım İlan Web Sitesi</strong></h1>
+                            <p class="m-b-40"> </p>
+                            <p><a class="btn hvr-hover"  asp-controller="Home" asp-action="Advertisement" >İlanları İncele</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="text-center">
+                <img src="~/SiteLayout/images/banner-01.jpg" alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="m-b-20"><strong>Tarım İlan Web Sitesi</strong></h1>
+                            <p class="m-b-40"> </p>
+                            <p><a class="btn hvr-hover"  asp-controller="Home" asp-action="Advertisement" >İlanları İncele</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="slides-navigation">
+            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- End Slider -->
+
+    <!-- Start Categories  -->
+    
+    <!-- End Categories -->
+	
+
+<!-- Start Products -->
+<div class="products-box">
+    <div class="container" >
+        <div class="row">
+            <div class="col-lg-12" >
+                <div class="title-all text-center">
+                    <h1>İLANLAR</h1>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <!-- Your special menu code -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Carousel -->
+        <div id="adCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Advertisements.Count(); i += 4)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row">
+                            @for (int j = i; j < i + 4 && j < Model.Advertisements.Count(); j++)
+                            {
+                                var ad = Model.Advertisements.ElementAt(j);
+                                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <img src="@ad.ImageUrl" class="img-fluid" alt="Image" style="width: 260px; height: 280px; object-fit: cover;">
+                                            <div class="mask-icon">
+                                                        <a class="cart" asp-controller="Advertisement" asp-action="Details" asp-route-id="@ad.Id">İlanı Gör</a>
+                                                    </div>
+                                        </div>
+                                        <div class="why-text">
+                                            <h4>@ad.Content</h4>
+                                            <h5>@ad.Title</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#adCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#adCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- End Carousel -->
+    </div>
+</div>
+<!-- End Products -->
+<!-- Start Blog -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Duyurular</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var announcement in Model.Announcements)
+            {
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="@announcement.ImagePath" alt="" />
+                           
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>@announcement.Title</h3>
+                                <p>@announcement.Content</p>
+                                <small>Posted on: @announcement.CreatedDate.ToString("yyyy-MM-dd")</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- End Blog -->
+    <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-01.jpg" alt="" />
+                   
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-02.jpg" alt="" />
+                 
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-03.jpg" alt="" />
+                  
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-04.jpg" alt="" />
+                
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-05.jpg" alt="" />
+                  
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-06.jpg" alt="" />
+                    
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-07.jpg" alt="" />
+                   
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-08.jpg" alt="" />
+                   
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-09.jpg" alt="" />
+                  
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="~/SiteLayout/images/instagram-img-05.jpg" alt="" />
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Instagram Feed  -->

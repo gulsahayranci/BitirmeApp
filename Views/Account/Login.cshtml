@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout="~/Views/Shared/_Bos.cshtml";
+}
+@model LoginViewModel
+<div class="full_container">
+         <div class="container">
+            <div class="center verticle_center full_height">
+               <div class="login_section">
+                  <div class="logo_login">
+                     <div class="center">
+                     
+                     </div>
+                  </div>
+                  <div class="login_form">
+                     <form asp-action="Login" asp-controller="Account" method="post">
+                        <fieldset>
+                           <div class="field">
+                              <label class="label_field" asp-for="Email">Email Address</label>
+                              <input asp-for="Email" class="form-control" placeholder="E-mail" />
+                               <span asp-validation-for="Email" class="text-danger"></span>
+                           </div>
+                           <div class="field">
+                             <label class="label_field" asp-for="Password">Password</label>
+                              <input asp-for="Password" class="form-control" placeholder="Password" />
+                               <span asp-validation-for="Password" class="text-danger"></span>
+
+                           </div>
+                           <div class="field">
+                              <input asp-for="RememberMe" class="form-check-input">
+                              <label class="form-check-label" asp-for="RememberMe"></label>
+           
+   
+                           </div>
+                           <div class="field margin_0">
+                              <label class="label_field hidden">hidden label</label>
+                              <button class="main_bt">Sing In</button>
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+ 
